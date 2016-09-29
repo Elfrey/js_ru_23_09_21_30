@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Comments from './Comments'
 
 export default class Article extends Component {
 
@@ -16,14 +17,22 @@ export default class Article extends Component {
         foo: 'bar'
     }
 */
+    showBody() {
+      const { article } = this.props
+      return (
+        <section>
+          {article.text}
+          {article.comments ? <Comments comments={article.comments} /> : null}
+        </section>
+      )
+    }
 
     render() {
         const { article } = this.props
         const { isOpen } = this.state
         console.log('---', this.state)
 
-        const body = isOpen ? <section>{article.text}</section> : null
-        // <section style = {{display: isOpen ? 'block' : 'none'}}>{article.text}</section>
+        const body = isOpen ? this.showBody() : null
         return (
             <div>
                 <h3 onClick = {this.toggleOpen}>{article.title}</h3>
