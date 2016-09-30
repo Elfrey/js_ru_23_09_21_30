@@ -16,6 +16,7 @@ export default class CommentList extends Component {
 
     return (
       <ul style={styles.comments}>
+      {/*Старайся не писать код в JSX - это ужасно читается в результате*/}
         {comments.map(comment => (
           <li style={styles.item}>
             <CommentItem comment={comment} key={comment.id} />
@@ -36,6 +37,7 @@ export default class CommentList extends Component {
         <span
           style={hover ? styles.buttonHover : styles.button}
           onClick={this.toggleOpen}
+      {/*лучше вынести это в методы, зачем захламлять JSX и на каждый рендер инициализировать функции*/}
           onMouseEnter={() => {
             this.setState({
               hover: true
