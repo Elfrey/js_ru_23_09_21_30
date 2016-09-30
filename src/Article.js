@@ -19,6 +19,7 @@ export default class Article extends Component {
 */
     showBody() {
       const { article } = this.props
+      //логичнее вынести проверку article.comments в Comments
       return (
         <section>
           {article.text}
